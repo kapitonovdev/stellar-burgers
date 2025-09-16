@@ -1,4 +1,9 @@
-import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  PayloadAction,
+  nanoid,
+  createSelector
+} from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient } from '../../utils/types';
 
 type TBurgerConstructorState = {
@@ -58,11 +63,12 @@ export const {
 export const getBurgerConstructor = (state: {
   burgerConstructor: TBurgerConstructorState;
 }) => state.burgerConstructor;
-export const getConstructorItems = (state: {
-  burgerConstructor: TBurgerConstructorState;
-}) => ({
-  bun: state.burgerConstructor.bun,
-  ingredients: state.burgerConstructor.ingredients
-});
+export const getConstructorItems = createSelector(
+  (state: { burgerConstructor: TBurgerConstructorState }) =>
+    state.burgerConstructor.bun,
+  (state: { burgerConstructor: TBurgerConstructorState }) =>
+    state.burgerConstructor.ingredients,
+  (bun, ingredients) => ({ bun, ingredients })
+);
 
 export default burgerConstructorSlice.reducer;
