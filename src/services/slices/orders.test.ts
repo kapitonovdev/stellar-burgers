@@ -57,12 +57,13 @@ describe('orders slice', () => {
     state = reducer(state, clearOrderModalData());
     expect(state.orderModalData).toBeNull();
 
-    state = reducer(state, { type: getOrderByNumber.fulfilled.type, payload: order });
+    state = reducer(state, {
+      type: getOrderByNumber.fulfilled.type,
+      payload: order
+    });
     expect(state.orderModalData?.number).toBe(42);
 
     state = reducer(state, clearOrder());
     expect(state.order).toBeNull();
   });
 });
-
-

@@ -62,7 +62,10 @@ describe('burgerConstructor slice', () => {
 
   it('should reorder ingredients', () => {
     let state = reducer(undefined, addIngredient(main));
-    state = reducer(state, addIngredient({ ...main, _id: 'main2', name: 'Котлета 2' }));
+    state = reducer(
+      state,
+      addIngredient({ ...main, _id: 'main2', name: 'Котлета 2' })
+    );
     const firstId = state.ingredients[0].id;
     state = reducer(state, moveIngredient({ dragIndex: 0, hoverIndex: 1 }));
     expect(state.ingredients[1].id).toBe(firstId);
@@ -75,5 +78,3 @@ describe('burgerConstructor slice', () => {
     expect(state).toEqual({ bun: null, ingredients: [] });
   });
 });
-
-

@@ -2,7 +2,7 @@ import { rootReducer } from './store';
 
 describe('rootReducer', () => {
   it('returns initial state when called with undefined and unknown action', () => {
-    const state = rootReducer(undefined as any, { type: 'UNKNOWN_ACTION' } as any);
+    const state = rootReducer(undefined, { type: 'UNKNOWN_ACTION' });
     expect(state).toEqual({
       user: {
         user: null,
@@ -30,5 +30,3 @@ describe('rootReducer', () => {
     });
   });
 });
-
-

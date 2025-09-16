@@ -23,7 +23,10 @@ describe('user slice', () => {
   it('should handle register lifecycle', () => {
     let state = reducer(undefined, { type: registerUser.pending.type });
     expect(state.isLoading).toBe(true);
-    state = reducer(state, { type: registerUser.fulfilled.type, payload: user });
+    state = reducer(state, {
+      type: registerUser.fulfilled.type,
+      payload: user
+    });
     expect(state.isLoading).toBe(false);
     expect(state.user).toEqual(user);
     expect(state.isAuthChecked).toBe(true);
@@ -71,5 +74,3 @@ describe('user slice', () => {
     expect(state.isAuthChecked).toBe(true);
   });
 });
-
-

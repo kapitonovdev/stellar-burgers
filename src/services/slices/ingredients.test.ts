@@ -47,5 +47,3 @@ describe('ingredients slice', () => {
     expect(state.error).toBe('Failed');
   });
 });
-
-

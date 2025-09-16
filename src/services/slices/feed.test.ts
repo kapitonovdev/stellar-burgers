@@ -66,5 +66,3 @@ describe('feed slice', () => {
     expect(state.error).toBe('Err');
   });
 });
-
-
